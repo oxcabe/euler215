@@ -22,12 +22,11 @@ void Muro::GenerarFilas(std::vector<Fila>& filas) {
 
 void Muro::CombinarFilasEnMuro(std::vector<Fila> filasGeneradas) {
 
-  CombinarFilasEnMuro(0, 0, filasGeneradas);
+  CombinarFilasEnMuro(0, filasGeneradas);
 
 }
 
-void Muro::CombinarFilasEnMuro(unsigned int profundidad, unsigned int posicion,
-  std::vector<Fila> filasGeneradas) {
+void Muro::CombinarFilasEnMuro(unsigned int profundidad, std::vector<Fila> filasGeneradas) {
 
   if (profundidad == altura_) {
     std::cout << *this << '\n';
@@ -35,12 +34,12 @@ void Muro::CombinarFilasEnMuro(unsigned int profundidad, unsigned int posicion,
     for (unsigned int i = 0; i < filasGeneradas.size(); ++i) {
       if (filas_.empty()) {
         filas_.push_back(filasGeneradas[i]);
-        CombinarFilasEnMuro(profundidad + 1, i, filasGeneradas);
+        CombinarFilasEnMuro(profundidad + 1, filasGeneradas);
         filas_.pop_back();
       } else {
         if (!LadrillosCoinciden(filas_.back(), filasGeneradas[i])) {
           filas_.push_back(filasGeneradas[i]);
-          CombinarFilasEnMuro(profundidad + 1, i, filasGeneradas);
+          CombinarFilasEnMuro(profundidad + 1, filasGeneradas);
           filas_.pop_back();
         } else {
 

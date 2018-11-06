@@ -17,7 +17,7 @@ private:
   void GenerarFilas(std::vector<Fila>& filas);
 
   void CombinarFilasEnMuro(std::vector<Fila> filasGeneradas);
-  void CombinarFilasEnMuro(unsigned int profundidad, unsigned int posicion, std::vector<Fila> filasGeneradas);
+  void CombinarFilasEnMuro(unsigned int profundidad, std::vector<Fila> filasGeneradas);
 
   bool LadrillosCoinciden(Fila& fila1, Fila& fila2) const;
 
