@@ -4,15 +4,12 @@ namespace CyA {
 
 void Muro::GenerarFilas(std::vector<Fila>& filas) {
 
-  Bloque bloque_dos = 2;
-  Bloque bloque_tres = 3;
-
-  for (unsigned int i = 0; i * bloque_dos <= anchura_; ++i) {
-    for (unsigned int j = 0; ((j * bloque_tres) + (i * bloque_dos)) <= anchura_; ++j) {
+  for (unsigned int i = 0; i * bloque_uno_ <= anchura_; ++i) {
+    for (unsigned int j = 0; ((j * bloque_dos_) + (i * bloque_uno_)) <= anchura_; ++j) {
       // std::cout << "Bloques de tres: " << i << ", Bloques de dos: " << j << ".\n";
-      if ((j * bloque_tres) + (i * bloque_dos) == anchura_) {
+      if ((j * bloque_dos_) + (i * bloque_uno_) == anchura_) {
 
-        Fila helper = {std::pair<int, Bloque>(i, bloque_dos), std::pair<int, Bloque>(j, bloque_tres)};
+        Fila helper = {std::pair<int, Bloque>(i, bloque_uno_), std::pair<int, Bloque>(j, bloque_dos_)};
         do {
           filas.push_back(helper);
         } while (std::next_permutation(helper.begin(), helper.end()));
@@ -46,7 +43,7 @@ void Muro::CombinarFilasEnMuro(unsigned int profundidad, unsigned int posicion,
           CombinarFilasEnMuro(profundidad + 1, i, filasGeneradas);
           filas_.pop_back();
         } else {
-        
+
         }
       }
     }
@@ -81,14 +78,7 @@ void Muro::GenerarMurosPosibles() {
   std::vector<Fila> filasGeneradas;
 
   GenerarFilas(filasGeneradas);
-
-  for (Fila& fila : filasGeneradas) {
-    std::cout << fila << '\n';
-  }
-
-  std::cout << "\n---------------------------------\n";
-
-    CombinarFilasEnMuro(filasGeneradas);
+  CombinarFilasEnMuro(filasGeneradas);
 
 }
 

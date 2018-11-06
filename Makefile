@@ -1,7 +1,7 @@
 CC=g++
 FLAGS=-Wall -std=c++11
 INCLUDE=include/
-BIN=bin/wall
+BIN=bin/muro
 SRC=src/
 MAIN=main.cpp
 
