@@ -12,9 +12,10 @@ int main(int argc, char* argv[]) {
 
   std::cout << "\nResultado: \n";
 
-  CyA::Muro muro(filas, columnas, bloque_uno, bloque_dos);
+  CyA::Muro muro(filas, columnas, bloque_uno, bloque_dos, false);
 
   muro.GenerarMurosPosibles();
 
+  std::cout << muro.getContador() << '\n';
 
 }

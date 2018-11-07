@@ -19,7 +19,6 @@ void Muro::GenerarFilas(std::vector<Fila>& filas) {
 
 }
 
-
 void Muro::CombinarFilasEnMuro(std::vector<Fila> filasGeneradas) {
 
   CombinarFilasEnMuro(0, filasGeneradas);
@@ -29,7 +28,10 @@ void Muro::CombinarFilasEnMuro(std::vector<Fila> filasGeneradas) {
 void Muro::CombinarFilasEnMuro(unsigned int profundidad, std::vector<Fila> filasGeneradas) {
 
   if (profundidad == altura_) {
-    std::cout << *this << '\n';
+    ++contador_;
+    if (verbose_ || contador_ % 1000000 == 0) {
+      std::cout << "Muro no. " << contador_ << ":\n" << *this << '\n';
+    }
   } else {
     for (unsigned int i = 0; i < filasGeneradas.size(); ++i) {
       if (filas_.empty()) {
